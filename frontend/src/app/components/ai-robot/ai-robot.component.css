@@ -1,0 +1,128 @@
+/* AI Robot Visual Component CSS */
+.robot-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  position: relative;
+}
+
+.robot-head {
+  width: 180px;
+  height: 180px;
+  background: radial-gradient(circle at 30% 30%, #1a233d, #0d1222);
+  border: 2px solid rgba(0, 240, 255, 0.4);
+  border-radius: 40px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 30px rgba(0, 240, 255, 0.25);
+  transition: all 0.4s ease;
+}
+
+/* State Driven Aura Glows */
+.state-idle {
+  border-color: #00f0ff;
+  box-shadow: 0 0 25px rgba(0, 240, 255, 0.3);
+}
+
+.state-listening {
+  border-color: #00ff88;
+  box-shadow: 0 0 35px rgba(0, 255, 136, 0.6);
+  animation: pulseListen 1.5s infinite alternate;
+}
+
+.state-thinking {
+  border-color: #ffaa00;
+  box-shadow: 0 0 35px rgba(255, 170, 0, 0.6);
+}
+
+.state-speaking {
+  border-color: #ff007f;
+  box-shadow: 0 0 40px rgba(255, 0, 127, 0.7);
+}
+
+/* Holographic Halo Ring */
+.robot-halo {
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  border: 2px dashed rgba(0, 240, 255, 0.5);
+  border-radius: 50%;
+  animation: spinRing 12s linear infinite;
+}
+
+/* Robot Eyes */
+.eyes-wrapper {
+  display: flex;
+  gap: 35px;
+  z-index: 2;
+}
+
+.eye {
+  width: 28px;
+  height: 28px;
+  background: #00f0ff;
+  border-radius: 50%;
+  box-shadow: 0 0 15px #00f0ff;
+  transition: all 0.3s ease;
+}
+
+.state-listening .eye { background: #00ff88; box-shadow: 0 0 15px #00ff88; }
+.state-thinking .eye { background: #ffaa00; box-shadow: 0 0 15px #ffaa00; height: 10px; border-radius: 5px; }
+.state-speaking .eye { background: #ff007f; box-shadow: 0 0 15px #ff007f; }
+
+/* Dynamic Animated Sound Wave Mouth */
+.mouth {
+  position: absolute;
+  bottom: 30px;
+  width: 60px;
+  height: 6px;
+  background: rgba(0, 240, 255, 0.8);
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+.state-speaking .mouth {
+  animation: speakWave 0.3s infinite alternate;
+  background: #ff007f;
+}
+
+@keyframes speakWave {
+  0% { height: 4px; width: 40px; }
+  100% { height: 20px; width: 65px; border-radius: 10px; }
+}
+
+@keyframes pulseListen {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.04); }
+}
+
+/* Status Indicator Pill */
+.status-pill {
+  margin-top: 18px;
+  padding: 6px 16px;
+  border-radius: 20px;
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.85rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+.status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.dot-idle { background: #00f0ff; box-shadow: 0 0 8px #00f0ff; }
+.dot-listening { background: #00ff88; box-shadow: 0 0 8px #00ff88; }
+.dot-thinking { background: #ffaa00; box-shadow: 0 0 8px #ffaa00; }
+.dot-speaking { background: #ff007f; box-shadow: 0 0 8px #ff007f; }
